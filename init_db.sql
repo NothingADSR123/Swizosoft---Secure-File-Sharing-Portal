@@ -1,7 +1,7 @@
 -- import this file in http://localhost/phpmyadmin/
---Go to phpMyAdmin → Import.
---Upload init_db.sql.
---Import.
+-- Go to phpMyAdmin → Import.
+-- Upload init_db.sql.
+-- Import.
 
 CREATE DATABASE IF NOT EXISTS swizoshare DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
