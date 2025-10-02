@@ -62,3 +62,6 @@ VALUES (
         'bob@swizo.com',
         '$2b$12$Fexepro3AWUieLXzFgN11.MIuVPMOTMvqmQPbQBDLlNU/QVDhre0u'
     );
+
+
+    
