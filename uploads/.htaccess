@@ -1,0 +1,19 @@
+# uploads/.htaccess
+
+# Disable script execution in this directory
+<FilesMatch "\.(php|phar|phtml|php3|php4|php5|php7|py|pl|cgi|asp|aspx|sh|bash)$">
+    Require all denied
+    # Older Apache versions might use Order, Deny
+    # Order allow,deny
+    # Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Prevent direct access to .htaccess itself
+<Files ".htaccess">
+    Require all denied
+    # Order allow,deny
+    # Deny from all
+</FilesMatch>
