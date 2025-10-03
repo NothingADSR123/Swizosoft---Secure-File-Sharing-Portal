@@ -99,27 +99,44 @@ $csrf_token = generateCsrfToken();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Secure File Sharing</title>
-    <link rel="stylesheet" href="assets/css/style.css"> <!-- Assuming Intern 1 creates this -->
+    <style>
+        body { font-family: sans-serif; margin: 0; background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: 40px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;}
+        input[type="text"], input[type="password"], input[type="email"] { padding: 10px; margin: 5px 0 15px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; width: 100%; max-width: 300px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
+        button:hover { background-color: #0056b3; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 15px; margin-bottom: 20px; border-radius: 4px; font-weight: bold; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .register-link { margin-top: 20px; text-align: center; }
+        .register-link a { color: #007bff; text-decoration: none; }
+        .register-link a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h2>Login to Swizoshare</h2>
+        <div class="header">
+            <h2>Login to Swizoshare</h2>
+        </div>
         <?php if (!empty($login_error)): ?>
-            <p style="color: red;"><?php echo htmlspecialchars($login_error); ?></p>
+            <div class="error"><?php echo htmlspecialchars($login_error); ?></div>
         <?php endif; ?>
         <form action="index.php" method="POST">
             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token); ?>">
-            <div>
+            <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required value="<?php echo htmlspecialchars($email ?? ''); ?>">
             </div>
-            <div>
+            <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit">Login</button>
         </form>
-        <p>Don't have an account? <a href="register.php">Register here</a></p>
+        <div class="register-link">
+            <p>Don't have an account? <a href="register.php">Register here</a></p>
+        </div>
     </div>
 </body>
 </html>
