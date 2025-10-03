@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS share_links (
     FOREIGN KEY (File_id) REFERENCES files (Id) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
--- Test users insterted with hashed passwords  
-INSERT INTO
+-- Test users insterted with hashed passwords
+INSERT IGNORE INTO
     users (Name, Email, Password_hash)
 VALUES (
         'Test User',
@@ -61,4 +61,113 @@ VALUES (
         'Bob Tester',
         'bob@swizo.com',
         '$2b$12$Fexepro3AWUieLXzFgN11.MIuVPMOTMvqmQPbQBDLlNU/QVDhre0u'
+    );
+
+-- Sample files for dashboard testing
+
+-- For Test User (id = 1)
+INSERT IGNORE INTO
+    files (
+        Original_name,
+        Stored_name,
+        Uploader_id,
+        Mime_type,
+        Size_bytes
+    )
+VALUES (
+        'project-doc.pdf',
+        'a1b2c3d4_project-doc.pdf',
+        1,
+        'application/pdf',
+        24576
+    ),
+    (
+        'design.png',
+        'e5f6g7h8_design.png',
+        1,
+        'image/png',
+        54321
+    );
+
+-- For Alice QA (id = 2)
+INSERT IGNORE INTO
+    files (
+        Original_name,
+        Stored_name,
+        Uploader_id,
+        Mime_type,
+        Size_bytes
+    )
+VALUES (
+        'requirements.docx',
+        'i9j0k1l2_requirements.docx',
+        2,
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        32768
+    ),
+    (
+        'report.jpg',
+        'm3n4o5p6_report.jpg',
+        2,
+        'image/jpeg',
+        15872
+    );
+
+-- For Bob Tester (id = 3)
+INSERT IGNORE INTO
+    files (
+        Original_name,
+        Stored_name,
+        Uploader_id,
+        Mime_type,
+        Size_bytes
+    )
+VALUES (
+        'test-plan.pdf',
+        'q7r8s9t0_test-plan.pdf',
+        3,
+        'application/pdf',
+        20480
+    ),
+    (
+        'screenshot.png',
+        'u1v2w3x4_screenshot.png',
+        3,
+        'image/png',
+        67890
+    );
+
+-- Sample share links for testing secure downloads
+
+INSERT IGNORE INTO
+    share_links (File_id, Token, Expires_at)
+VALUES (
+        1,
+        'tok_abc123456789',
+        DATE_ADD(NOW(), INTERVAL 7 DAY)
+    ),
+    (
+        2,
+        'tok_def987654321',
+        DATE_ADD(NOW(), INTERVAL 3 DAY)
+    ),
+    (
+        3,
+        'tok_ghi456123789',
+        DATE_ADD(NOW(), INTERVAL 5 DAY)
+    ),
+    (
+        4,
+        'tok_jkl321654987',
+        DATE_ADD(NOW(), INTERVAL 1 DAY)
+    ),
+    (
+        5,
+        'tok_mno741852963',
+        DATE_ADD(NOW(), INTERVAL 10 DAY)
+    ),
+    (
+        6,
+        'tok_pqr369258147',
+        DATE_ADD(NOW(), INTERVAL 2 DAY)
     );
