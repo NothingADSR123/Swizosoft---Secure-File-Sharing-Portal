@@ -264,10 +264,12 @@ $csrf_token = generateCsrfToken(); // This will be used in all AJAX POST request
 
                     if (data.success) {
     // Fix the returned URL to include Swizosoft(WarmUp)
-    const correctedUrl = data.share_url.replace(
-        "http://localhost/",
-        "http://localhost/Swizosoft(WarmUp)/"
-    );
+    // const correctedUrl = data.share_url.replace(
+    //     "http://localhost/",
+    //     "http://localhost/Swizosoft(WarmUp)/"
+    // );
+const correctedUrl = `${window.location.origin}/Swizosoft---Secure-File-Sharing-Portal/download.php?token=${data.token}`;
+
 
     prompt("Copy this share link:", correctedUrl);
     showMessage(data.message, 'success');
