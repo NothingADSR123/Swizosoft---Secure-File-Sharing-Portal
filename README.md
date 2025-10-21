@@ -16,7 +16,6 @@
 *   [Security Measures](#security-measures)
 *   [Project Structure](#project-structure)
 *   [Contributing](#contributing)
-*   [License](#license)
 *   [Contact](#contact)
 
 ## Features
@@ -178,11 +177,8 @@ Contributions are welcome! If you'd like to improve Swizoshare, please follow th
 5.  Push to the branch (`git push origin feature/your-feature-name`).
 6.  Create a new Pull Request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-*(Note: You will need to create a `LICENSE` file in your root directory if you want to include one.)*
 
 ## Contact
 
 For any questions or suggestions, please open an issue in the GitHub repository
+
